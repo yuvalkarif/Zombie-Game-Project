@@ -17,6 +17,7 @@ public class PlayerCamera : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         //Vector3 newPos = new Vector3(player.transform.position.x, player.transform.position.y, this.transform.position.z);
+        if (player!=null)
         transform.position = Vector3.Lerp(transform.position, player.transform.position, m_Speed) + new Vector3(0, 0, -10);
 		
 	}
