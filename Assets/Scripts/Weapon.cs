@@ -1,7 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
+	
 public class Weapon : MonoBehaviour {
     [Range(0,100)]
     public float fireRate =0;
@@ -10,6 +11,17 @@ public class Weapon : MonoBehaviour {
 
     public Transform BulletTrailPrefab;
     public Transform MuzzleFlashPrefab;
+
+   
+    public int currentMags = -1;
+    public Text AmmoLeftText;
+
+	public int maxAmmo = 30;
+	public int currentAmmo =-1;
+	public float reloadTime = 1f;
+	private bool isReloading = false;
+	public Text AmmoText;
+    public int ammoLeft = 90;
 
     float timeToSpawnEffect = 0;
     public float effectSpawnRate = 10;
@@ -25,32 +37,79 @@ public class Weapon : MonoBehaviour {
         { Debug.LogError("No Fire Point"); }
 		
 	}
-	
+	void Start()
+	{
+		if (currentAmmo == -1) {
+			currentAmmo = maxAmmo;
+		}
+       
+		SetAmmoText ();
+        SetAmmoLeftText();
+       
+	}
+	void onEnable()
+	{
+		isReloading = false;
+
+	}
 	// Update is called once per frame
 	void Update () {
        
-        if (fireRate == 0)
-        {
-            if (Input.GetKeyDown(KeyCode.Mouse0))
-            {
-                Shoot();
-            }
+		if (isReloading) {
+			return;
+		}
 
-        }
-        else
-        {
-            if (Input.GetKey(KeyCode.Mouse0) && Time.time > timeToFire)
-            {
-                
-                timeToFire = Time.time + 1/fireRate;
-                Shoot();
-            }
-        }
+		if (Input.GetKeyDown(KeyCode.R) && ammoLeft > 0) {
+			StartCoroutine(Reload ());
+			return;
+		}
+		if (currentAmmo > 0) {
+			
 		
+			if (fireRate == 0) {
+				if (Input.GetKeyDown (KeyCode.Mouse0)) {
+					Shoot ();
+				}
+			} else {
+				if (Input.GetKey (KeyCode.Mouse0) && Time.time > timeToFire) {
+                
+					timeToFire = Time.time + 1 / fireRate;
+					Shoot ();
+				}
+			}
+		}
+		
+	}
+	IEnumerator Reload()
+	{
+        if (ammoLeft > 0)
+        {     
+            
+          
+                ammoLeft = ammoLeft - maxAmmo + currentAmmo;
+                SetAmmoLeftText();
+
+                isReloading = true;
+                Debug.Log("Reloading");
+
+                yield return new WaitForSeconds(reloadTime);
+                if (ammoLeft % maxAmmo == 0 || ammoLeft > maxAmmo)
+                {
+                    currentAmmo = maxAmmo;
+                }
+                else
+                {
+                    currentAmmo =  ammoLeft%maxAmmo;
+                }
+                isReloading = false;
+            
+        }
 	}
 
     void Shoot()
     {
+		currentAmmo--;
+		SetAmmoText ();
         Vector2 mousePosition = new Vector2(Camera.main.ScreenToWorldPoint(Input.mousePosition).x,Camera.main.ScreenToWorldPoint(Input.mousePosition).y);
         Vector2 firePointPosition = new Vector2(firePoint.position.x, firePoint.position.y);
         RaycastHit2D hit = Physics2D.Raycast(firePointPosition, mousePosition - firePointPosition,100,whatToHit);
@@ -80,5 +139,13 @@ public class Weapon : MonoBehaviour {
         clone.localScale = new Vector3(size, size, size);
         
         Destroy(clone.gameObject,0.02f);
+    }
+	void SetAmmoText()
+	{
+		AmmoText.text = "Ammo  =  " + currentAmmo.ToString();
+	}
+    void SetAmmoLeftText()
+    {
+        AmmoLeftText.text = "Ammo Left  =  " + ammoLeft.ToString();
     }
 }
