@@ -83,24 +83,24 @@ public class Weapon : MonoBehaviour {
 	IEnumerator Reload()
 	{
         if (ammoLeft > 0)
-        {     
-            
-          
-                ammoLeft = ammoLeft - maxAmmo + currentAmmo;
-                SetAmmoLeftText();
-
+        {
                 isReloading = true;
                 Debug.Log("Reloading");
-
+				if (ammoLeft >= maxAmmo) {
+					ammoLeft = ammoLeft  + currentAmmo- maxAmmo ;
+					currentAmmo = maxAmmo;
+					
+				} 
+				else if (currentAmmo + ammoLeft > maxAmmo) {
+					ammoLeft = ammoLeft + currentAmmo - maxAmmo;
+					currentAmmo = maxAmmo;
+				} 
+				else {
+					currentAmmo = currentAmmo + ammoLeft;
+					ammoLeft = 0;
+				}
+				SetAmmoLeftText();
                 yield return new WaitForSeconds(reloadTime);
-                if (ammoLeft % maxAmmo == 0 || ammoLeft > maxAmmo)
-                {
-                    currentAmmo = maxAmmo;
-                }
-                else
-                {
-                    currentAmmo =  ammoLeft%maxAmmo;
-                }
                 isReloading = false;
             
         }
