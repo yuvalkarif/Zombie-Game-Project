@@ -7,6 +7,19 @@ public class Enemy : MonoBehaviour {
     public class EnemyStats
     {
         public int maxHealth;
+		private int money;
+		public int Money
+		{
+			get{ return money; }
+			set{ money = value; }
+		}
+		private int points;
+		public int Points
+		{
+			get{ return points; }
+			set{ points = value; }
+		}
+
         private int _currentHealth;
         public int currentHealth
         {
@@ -15,10 +28,12 @@ public class Enemy : MonoBehaviour {
         }
         public void Init()
         {
+			money = 10;
+			points = 20;
             currentHealth = maxHealth;
         }
     }
-
+	Player player;
     public EnemyStats stats = new EnemyStats();
 
     [Header("Optional")]
@@ -26,6 +41,7 @@ public class Enemy : MonoBehaviour {
     private StatusIndicator statusIndicator;
     void Start()
     {
+		player =  GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
         stats.Init();
         if (statusIndicator != null)
         { statusIndicator.SetHealth(stats.currentHealth, stats.maxHealth); };
@@ -37,6 +53,11 @@ public class Enemy : MonoBehaviour {
         if (stats.currentHealth <= 0)
         {
             GameMaster.KillEnemy(this);
+			player.changeMoney (stats.Money);
+			player.changePoints (stats.Points);
+			player.SetMoneyText ();
+			player.SetPointsText ();
+
         }
         if (statusIndicator != null)
         { statusIndicator.SetHealth(stats.currentHealth, stats.maxHealth); };
