@@ -7,6 +7,7 @@ public class Player : MonoBehaviour {
     public class PlayerStats
     {
         public int maxHealth;
+        [SerializeField]
         private int _currentHealth;
         public int currentHealth
         {   
@@ -38,5 +39,11 @@ public class Player : MonoBehaviour {
         {
             GameMaster.KillPlayer(this);
         }
+    }
+
+    public void HealPlayer()
+    {
+        playerStats.currentHealth = playerStats.maxHealth;
+        
     }
 }

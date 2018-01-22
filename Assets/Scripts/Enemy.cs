@@ -4,9 +4,12 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour {
     [System.Serializable]
+    
     public class EnemyStats
     {
+        [SerializeField]
         public int maxHealth;
+        
         private int _currentHealth;
         public int currentHealth
         {
@@ -36,10 +39,23 @@ public class Enemy : MonoBehaviour {
        stats.currentHealth -= damage;
         if (stats.currentHealth <= 0)
         {
+            PowerUpDrop();
             GameMaster.KillEnemy(this);
         }
         if (statusIndicator != null)
         { statusIndicator.SetHealth(stats.currentHealth, stats.maxHealth); };
+    }
+
+    [Header("PowerUps")]
+    public GameObject[] PowerUps;
+
+    void PowerUpDrop()
+    {
+        if (Random.value <= 0.5)
+        {
+            
+            Instantiate(PowerUps[Random.Range(0,PowerUps.Length)], new Vector2(this.transform.position.x, this.transform.position.y), Quaternion.identity);
+        }
     }
 }
 
