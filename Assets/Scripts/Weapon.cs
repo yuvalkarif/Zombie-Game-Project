@@ -19,7 +19,7 @@ public class Weapon : MonoBehaviour {
     float timeToFire = 0;
     Transform firePoint;
 
-            
+    
         public int maxCurrentAmmo = 30;
         public int currentAmmo;
         public int maxMagAmmo = 90;

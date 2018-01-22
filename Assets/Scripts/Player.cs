@@ -21,23 +21,20 @@ public class Player : MonoBehaviour {
         }
     }
     public PlayerStats playerStats = new PlayerStats();
-
     [Header("Optional")]
     [SerializeField]
-	public int money;
-	public int points;
-	public Text moneyText;
-	public Text pointsText;
     private StatusIndicator statusIndicator;
+    public int money;
+    public int points;
+    public Text moneyText;
+    public Text pointsText;
     void Start()
     {
         playerStats.Init();
         if (statusIndicator != null)
         { statusIndicator.SetHealth(playerStats.currentHealth, playerStats.maxHealth); };
-		money = 0;
-		points = 0;
-		SetMoneyText ();
-		SetPointsText ();
+        SetMoneyText();
+        SetPointsText();
     }
 
     
@@ -50,29 +47,26 @@ public class Player : MonoBehaviour {
             GameMaster.KillPlayer(this);
         }
     }
-<<<<<<< HEAD
-	public void changeMoney(int change)
-	{
-		money += change;
-	}
-	public void changePoints(int change)
-	{
-		points += change;
-	}
-	public void SetMoneyText()
-	{
-		moneyText.text = "Money = " + money.ToString();
-	}
-	public void SetPointsText()
-	{
-		pointsText.text = "Points = " + points.ToString();
-	}
-=======
 
     public void HealPlayer()
     {
         playerStats.currentHealth = playerStats.maxHealth;
         
     }
->>>>>>> 60e6e2dd4f9e617609f9e44b190f4052e484b70e
+    public void changeMoney(int change)
+    {
+        money += change;
+    }
+    public void changePoints(int change)
+    {
+        points += change;
+    }
+    public void SetMoneyText()
+    {
+        moneyText.text = "Money = " + money.ToString();
+    }
+    public void SetPointsText()
+    {
+        pointsText.text = "Points = " + points.ToString();
+    }
 }

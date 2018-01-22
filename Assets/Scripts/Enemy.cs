@@ -9,23 +9,20 @@ public class Enemy : MonoBehaviour {
     {
         [SerializeField]
         public int maxHealth;
-<<<<<<< HEAD
-		private int money;
-		public int Money
-		{
-			get{ return money; }
-			set{ money = value; }
-		}
-		private int points;
-		public int Points
-		{
-			get{ return points; }
-			set{ points = value; }
-		}
 
-=======
-        
->>>>>>> 60e6e2dd4f9e617609f9e44b190f4052e484b70e
+        private int points;
+        public int Points
+        {
+            get { return points; }
+            set { points = value; }
+        }
+        private int money;
+        public int Money
+        {
+            get { return money; }
+            set { money = value; }
+        }
+
         private int _currentHealth;
         public int currentHealth
         {
@@ -34,12 +31,12 @@ public class Enemy : MonoBehaviour {
         }
         public void Init()
         {
-			money = 10;
-			points = 20;
             currentHealth = maxHealth;
+            points = 20;
+            money = 10;
         }
     }
-	Player player;
+
     public EnemyStats stats = new EnemyStats();
 
     [Header("Optional")]
@@ -47,24 +44,23 @@ public class Enemy : MonoBehaviour {
     private StatusIndicator statusIndicator;
     void Start()
     {
-		player =  GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
         stats.Init();
         if (statusIndicator != null)
         { statusIndicator.SetHealth(stats.currentHealth, stats.maxHealth); };
     }
-
+    Player player;
     public void DamageEnemy(int damage)
     {
+        player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
        stats.currentHealth -= damage;
         if (stats.currentHealth <= 0)
         {
             PowerUpDrop();
             GameMaster.KillEnemy(this);
-			player.changeMoney (stats.Money);
-			player.changePoints (stats.Points);
-			player.SetMoneyText ();
-			player.SetPointsText ();
-
+            player.changeMoney(stats.Money);
+            player.changePoints(stats.Points);
+            player.SetMoneyText();
+            player.SetPointsText();
         }
         if (statusIndicator != null)
         { statusIndicator.SetHealth(stats.currentHealth, stats.maxHealth); };
