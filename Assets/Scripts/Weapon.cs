@@ -2,26 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-	
+
 public class Weapon : MonoBehaviour {
-    [Range(0,100)]
-    public float fireRate =0;
+    [Range(0, 100)]
+    public float fireRate = 0;
     public int Damage = 10;
     public LayerMask whatToHit;
 
     public Transform BulletTrailPrefab;
     public Transform MuzzleFlashPrefab;
 
-   
-    public int currentMags = -1;
-    public Text AmmoLeftText;
-
-	public int maxAmmo = 30;
-	public int currentAmmo =-1;
-	public float reloadTime = 1f;
-	private bool isReloading = false;
-	public Text AmmoText;
-    public int ammoLeft = 90;
 
     float timeToSpawnEffect = 0;
     public float effectSpawnRate = 10;
@@ -29,9 +19,26 @@ public class Weapon : MonoBehaviour {
     float timeToFire = 0;
     Transform firePoint;
 
+            
+        public int maxCurrentAmmo = 30;
+        public int currentAmmo;
+        public int maxMagAmmo = 90;
+        public int currentMagAmmo;
 
-	// Use this for initialization
-	void Awake () {
+        public bool isReloading = false;
+        public float reloadTime = 1f;
+
+        public Text AmmoText;
+        public Text AmmoLeftText;
+    
+       
+   
+
+
+
+
+    // Use this for initialization
+    void Awake () {
         firePoint = this.transform;
         if (firePoint == null)
         { Debug.LogError("No Fire Point"); }
@@ -39,9 +46,8 @@ public class Weapon : MonoBehaviour {
 	}
 	void Start()
 	{
-		if (currentAmmo == -1) {
-			currentAmmo = maxAmmo;
-		}
+        currentAmmo = maxCurrentAmmo;
+        currentMagAmmo = maxMagAmmo;
        
 		SetAmmoText ();
         SetAmmoLeftText();
@@ -59,7 +65,7 @@ public class Weapon : MonoBehaviour {
 			return;
 		}
 
-		if (Input.GetKeyDown(KeyCode.R) && ammoLeft > 0) {
+		if (Input.GetKeyDown(KeyCode.R) && currentAmmo!=maxCurrentAmmo) {
 			StartCoroutine(Reload ());
 			return;
 		}
@@ -82,27 +88,28 @@ public class Weapon : MonoBehaviour {
 	}
 	IEnumerator Reload()
 	{
-        if (ammoLeft > 0)
+        if (currentMagAmmo > 0)
         {
                 isReloading = true;
                 Debug.Log("Reloading");
-				if (ammoLeft >= maxAmmo) {
-					ammoLeft = ammoLeft  + currentAmmo- maxAmmo ;
-					currentAmmo = maxAmmo;
+				if (currentMagAmmo >= maxCurrentAmmo) {
+					currentMagAmmo = currentMagAmmo  + currentAmmo- maxCurrentAmmo ;
+					currentAmmo = maxCurrentAmmo;
 					
 				} 
-				else if (currentAmmo + ammoLeft > maxAmmo) {
-					ammoLeft = ammoLeft + currentAmmo - maxAmmo;
-					currentAmmo = maxAmmo;
+				else if (currentAmmo + currentMagAmmo > maxCurrentAmmo) {
+					currentMagAmmo = currentMagAmmo + currentAmmo - maxCurrentAmmo;
+					currentAmmo = maxCurrentAmmo;
 				} 
 				else {
-					currentAmmo = currentAmmo + ammoLeft;
-					ammoLeft = 0;
+					currentAmmo = currentAmmo + currentMagAmmo;
+					currentMagAmmo = 0;
 				}
-				SetAmmoLeftText();
+				
                 yield return new WaitForSeconds(reloadTime);
                 isReloading = false;
-            
+                SetAmmoLeftText();
+                SetAmmoText();
         }
 	}
 
@@ -142,10 +149,18 @@ public class Weapon : MonoBehaviour {
     }
 	void SetAmmoText()
 	{
-		AmmoText.text = "Ammo  =  " + currentAmmo.ToString();
+		AmmoText.text = currentAmmo.ToString();
 	}
     void SetAmmoLeftText()
     {
-        AmmoLeftText.text = "Ammo Left  =  " + ammoLeft.ToString();
+        AmmoLeftText.text = "/" + currentMagAmmo.ToString();
+    }
+    public void MaxAmmo()
+    {
+        currentAmmo = maxCurrentAmmo;
+        currentMagAmmo = maxMagAmmo;
+        SetAmmoText();
+        SetAmmoLeftText();
+        
     }
 }
