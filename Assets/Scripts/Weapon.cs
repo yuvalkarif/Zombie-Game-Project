@@ -35,7 +35,7 @@ public class Weapon : MonoBehaviour {
    
 
 
-
+	PauseGame p = new PauseGame();
 
     // Use this for initialization
     void Awake () {
@@ -59,28 +59,31 @@ public class Weapon : MonoBehaviour {
 
 	}
 	// Update is called once per frame
-	void Update () {
-       
-		if (isReloading) {
-			return;
-		}
-
-		if (Input.GetKeyDown(KeyCode.R) && currentAmmo!=maxCurrentAmmo) {
-			StartCoroutine(Reload ());
-			return;
-		}
-		if (currentAmmo > 0) {
+	void FixedUpdate () {
+		if (p.Paused == false) {
 			
 		
-			if (fireRate == 0) {
-				if (Input.GetKeyDown (KeyCode.Mouse0)) {
-					Shoot ();
-				}
-			} else {
-				if (Input.GetKey (KeyCode.Mouse0) && Time.time > timeToFire) {
+			if (isReloading) {
+				return;
+			}
+
+			if (Input.GetKeyDown (KeyCode.R) && currentAmmo != maxCurrentAmmo) {
+				StartCoroutine (Reload ());
+				return;
+			}
+			if (currentAmmo > 0) {
+			
+		
+				if (fireRate == 0) {
+					if (Input.GetKeyDown (KeyCode.Mouse0)) {
+						Shoot ();
+					}
+				} else {
+					if (Input.GetKey (KeyCode.Mouse0) && Time.time > timeToFire) {
                 
-					timeToFire = Time.time + 1 / fireRate;
-					Shoot ();
+						timeToFire = Time.time + 1 / fireRate;
+						Shoot ();
+					}
 				}
 			}
 		}
@@ -115,6 +118,9 @@ public class Weapon : MonoBehaviour {
 
     void Shoot()
     {
+		if (p.Paused == false) {
+			
+		
 		currentAmmo--;
 		SetAmmoText ();
         Vector2 mousePosition = new Vector2(Camera.main.ScreenToWorldPoint(Input.mousePosition).x,Camera.main.ScreenToWorldPoint(Input.mousePosition).y);
@@ -126,15 +132,14 @@ public class Weapon : MonoBehaviour {
             timeToSpawnEffect = Time.time + 1 / effectSpawnRate;
         }
         
-        if (hit.collider != null)
-        {
-            Enemy enemy = hit.collider.GetComponent<Enemy>();
-            if (enemy != null)
-            {
-                enemy.DamageEnemy(Damage);
-            }
-            
+			if (hit.collider != null) {
+				Enemy enemy = hit.collider.GetComponent<Enemy> ();
+				if (enemy != null) {
+					enemy.DamageEnemy (Damage);
+				}
+			}
         }
+
     }
 
     void Effect()
