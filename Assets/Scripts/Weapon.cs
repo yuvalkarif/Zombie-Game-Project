@@ -13,21 +13,23 @@ public class Weapon : MonoBehaviour {
     public Transform MuzzleFlashPrefab;
 
    
-    public int currentMags = -1;
-    public Text AmmoLeftText;
-
-	public int maxAmmo = 30;
-	public int currentAmmo =-1;
-	public float reloadTime = 1f;
-	private bool isReloading = false;
-	public Text AmmoText;
-    public int ammoLeft = 90;
-
     float timeToSpawnEffect = 0;
     public float effectSpawnRate = 10;
 
     float timeToFire = 0;
     Transform firePoint;
+
+    [Header("Ammo Settings")]
+    public int maxAmmo = 30;
+	public int currentAmmo =-1;
+	public float reloadTime = 1f;
+	private bool isReloading = false;
+	public Text AmmoText;
+    public Text AmmoLeftText;
+    public int currentMags = -1;
+    public int ammoLeft = 90;
+
+   
 
 
 	// Use this for initialization
@@ -99,10 +101,11 @@ public class Weapon : MonoBehaviour {
 					currentAmmo = currentAmmo + ammoLeft;
 					ammoLeft = 0;
 				}
-				SetAmmoLeftText();
+				
                 yield return new WaitForSeconds(reloadTime);
                 isReloading = false;
-            
+                SetAmmoLeftText();
+                SetAmmoText();
         }
 	}
 
