@@ -1,12 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour {
     [System.Serializable]
     public class PlayerStats
     {
         public int maxHealth;
+        [SerializeField]
         private int _currentHealth;
         public int currentHealth
         {   
@@ -22,11 +24,17 @@ public class Player : MonoBehaviour {
     [Header("Optional")]
     [SerializeField]
     private StatusIndicator statusIndicator;
+    public int money;
+    public int points;
+    public Text moneyText;
+    public Text pointsText;
     void Start()
     {
         playerStats.Init();
         if (statusIndicator != null)
         { statusIndicator.SetHealth(playerStats.currentHealth, playerStats.maxHealth); };
+        SetMoneyText();
+        SetPointsText();
     }
 
     
@@ -38,5 +46,27 @@ public class Player : MonoBehaviour {
         {
             GameMaster.KillPlayer(this);
         }
+    }
+
+    public void HealPlayer()
+    {
+        playerStats.currentHealth = playerStats.maxHealth;
+        
+    }
+    public void changeMoney(int change)
+    {
+        money += change;
+    }
+    public void changePoints(int change)
+    {
+        points += change;
+    }
+    public void SetMoneyText()
+    {
+        moneyText.text = "Money = " + money.ToString();
+    }
+    public void SetPointsText()
+    {
+        pointsText.text = "Points = " + points.ToString();
     }
 }
