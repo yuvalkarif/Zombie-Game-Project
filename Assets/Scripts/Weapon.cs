@@ -2,17 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
+	
 public class Weapon : MonoBehaviour {
-    [Range(0, 100)]
-    public float fireRate = 0;
+    [Range(0,100)]
+    public float fireRate =0;
     public int Damage = 10;
     public LayerMask whatToHit;
 
     public Transform BulletTrailPrefab;
     public Transform MuzzleFlashPrefab;
 
-<<<<<<< HEAD
    
     float timeToSpawnEffect = 0;
     public float effectSpawnRate = 10;
@@ -29,31 +28,12 @@ public class Weapon : MonoBehaviour {
     public Text AmmoLeftText;
     public int currentMags = -1;
     public int ammoLeft = 90;
-=======
->>>>>>> c72b791593cc4a8543f8a8536f65ea96691ac33e
 
    
 
-    
-        public int maxCurrentAmmo = 30;
-        public int currentAmmo;
-        public int maxMagAmmo = 90;
-        public int currentMagAmmo;
 
-        public bool isReloading = false;
-        public float reloadTime = 1f;
-
-        public Text AmmoText;
-        public Text AmmoLeftText;
-    
-       
-   
-
-
-	PauseGame p = new PauseGame();
-
-    // Use this for initialization
-    void Awake () {
+	// Use this for initialization
+	void Awake () {
         firePoint = this.transform;
         if (firePoint == null)
         { Debug.LogError("No Fire Point"); }
@@ -61,8 +41,9 @@ public class Weapon : MonoBehaviour {
 	}
 	void Start()
 	{
-        currentAmmo = maxCurrentAmmo;
-        currentMagAmmo = maxMagAmmo;
+		if (currentAmmo == -1) {
+			currentAmmo = maxAmmo;
+		}
        
 		SetAmmoText ();
         SetAmmoLeftText();
@@ -74,31 +55,28 @@ public class Weapon : MonoBehaviour {
 
 	}
 	// Update is called once per frame
-	void FixedUpdate () {
-		if (p.Paused == false) {
-			
-		
-			if (isReloading) {
-				return;
-			}
+	void Update () {
+       
+		if (isReloading) {
+			return;
+		}
 
-			if (Input.GetKeyDown (KeyCode.R) && currentAmmo != maxCurrentAmmo) {
-				StartCoroutine (Reload ());
-				return;
-			}
-			if (currentAmmo > 0) {
+		if (Input.GetKeyDown(KeyCode.R) && ammoLeft > 0) {
+			StartCoroutine(Reload ());
+			return;
+		}
+		if (currentAmmo > 0) {
 			
 		
-				if (fireRate == 0) {
-					if (Input.GetKeyDown (KeyCode.Mouse0)) {
-						Shoot ();
-					}
-				} else {
-					if (Input.GetKey (KeyCode.Mouse0) && Time.time > timeToFire) {
+			if (fireRate == 0) {
+				if (Input.GetKeyDown (KeyCode.Mouse0)) {
+					Shoot ();
+				}
+			} else {
+				if (Input.GetKey (KeyCode.Mouse0) && Time.time > timeToFire) {
                 
-						timeToFire = Time.time + 1 / fireRate;
-						Shoot ();
-					}
+					timeToFire = Time.time + 1 / fireRate;
+					Shoot ();
 				}
 			}
 		}
@@ -106,22 +84,22 @@ public class Weapon : MonoBehaviour {
 	}
 	IEnumerator Reload()
 	{
-        if (currentMagAmmo > 0)
+        if (ammoLeft > 0)
         {
                 isReloading = true;
                 Debug.Log("Reloading");
-				if (currentMagAmmo >= maxCurrentAmmo) {
-					currentMagAmmo = currentMagAmmo  + currentAmmo- maxCurrentAmmo ;
-					currentAmmo = maxCurrentAmmo;
+				if (ammoLeft >= maxAmmo) {
+					ammoLeft = ammoLeft  + currentAmmo- maxAmmo ;
+					currentAmmo = maxAmmo;
 					
 				} 
-				else if (currentAmmo + currentMagAmmo > maxCurrentAmmo) {
-					currentMagAmmo = currentMagAmmo + currentAmmo - maxCurrentAmmo;
-					currentAmmo = maxCurrentAmmo;
+				else if (currentAmmo + ammoLeft > maxAmmo) {
+					ammoLeft = ammoLeft + currentAmmo - maxAmmo;
+					currentAmmo = maxAmmo;
 				} 
 				else {
-					currentAmmo = currentAmmo + currentMagAmmo;
-					currentMagAmmo = 0;
+					currentAmmo = currentAmmo + ammoLeft;
+					ammoLeft = 0;
 				}
 				
                 yield return new WaitForSeconds(reloadTime);
@@ -133,9 +111,6 @@ public class Weapon : MonoBehaviour {
 
     void Shoot()
     {
-		if (p.Paused == false) {
-			
-		
 		currentAmmo--;
 		SetAmmoText ();
         Vector2 mousePosition = new Vector2(Camera.main.ScreenToWorldPoint(Input.mousePosition).x,Camera.main.ScreenToWorldPoint(Input.mousePosition).y);
@@ -147,14 +122,15 @@ public class Weapon : MonoBehaviour {
             timeToSpawnEffect = Time.time + 1 / effectSpawnRate;
         }
         
-			if (hit.collider != null) {
-				Enemy enemy = hit.collider.GetComponent<Enemy> ();
-				if (enemy != null) {
-					enemy.DamageEnemy (Damage);
-				}
-			}
+        if (hit.collider != null)
+        {
+            Enemy enemy = hit.collider.GetComponent<Enemy>();
+            if (enemy != null)
+            {
+                enemy.DamageEnemy(Damage);
+            }
+            
         }
-
     }
 
     void Effect()
@@ -169,18 +145,10 @@ public class Weapon : MonoBehaviour {
     }
 	void SetAmmoText()
 	{
-		AmmoText.text = currentAmmo.ToString();
+		AmmoText.text = "Ammo  =  " + currentAmmo.ToString();
 	}
     void SetAmmoLeftText()
     {
-        AmmoLeftText.text = "/" + currentMagAmmo.ToString();
-    }
-    public void MaxAmmo()
-    {
-        currentAmmo = maxCurrentAmmo;
-        currentMagAmmo = maxMagAmmo;
-        SetAmmoText();
-        SetAmmoLeftText();
-        
+        AmmoLeftText.text = "Ammo Left  =  " + ammoLeft.ToString();
     }
 }

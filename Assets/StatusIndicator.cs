@@ -19,9 +19,8 @@ public class StatusIndicator : MonoBehaviour {
     {
         float _value = (float)_cur / _max;
         healthBarRect.localScale = new Vector3(_value, healthBarRect.localScale.y, healthBarRect.localScale.z);
-        
         healthText.text = _cur + "/" + _max + " HP";
     }
-    
+
 }
 

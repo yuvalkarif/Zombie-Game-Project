@@ -90,11 +90,3 @@ MonoBehaviour:
   MuzzleFlashPrefab: {fileID: 4335307689436846, guid: 26bf295fa42e7754faddf428eeafcb67,
     type: 2}
   effectSpawnRate: 10
-  maxCurrentAmmo: 30
-  currentAmmo: -1
-  maxMagAmmo: 90
-  currentMagAmmo: 0
-  isReloading: 0
-  reloadTime: 1
-  AmmoText: {fileID: 0}
-  AmmoLeftText: {fileID: 0}

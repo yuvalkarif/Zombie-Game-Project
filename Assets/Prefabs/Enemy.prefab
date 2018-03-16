@@ -273,9 +273,6 @@ MonoBehaviour:
   stats:
     maxHealth: 100
   statusIndicator: {fileID: 114559674550620370}
-  PowerUps:
-  - {fileID: 1618228557116960, guid: 3af1aeb02be9bed4eb32e353d8c216fe, type: 2}
-  - {fileID: 1009679609862728, guid: 694ac188e86ed0844a88feb6c3dee9d6, type: 2}
 --- !u!114 &114987742243459192
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -358,7 +355,7 @@ Canvas:
   m_RenderMode: 2
   m_Camera: {fileID: 0}
   m_PlaneDistance: 100
-  m_PixelPerfect: 1
+  m_PixelPerfect: 0
   m_ReceivesEvents: 1
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
