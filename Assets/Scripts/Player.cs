@@ -63,10 +63,10 @@ public class Player : MonoBehaviour {
     }
     public void SetMoneyText()
     {
-        moneyText.text = "Money = " + money.ToString();
+        moneyText.text = money.ToString() + "$";
     }
     public void SetPointsText()
     {
-        pointsText.text = "Points = " + points.ToString();
+        pointsText.text = "SCORE:" + points.ToString();
     }
 }
