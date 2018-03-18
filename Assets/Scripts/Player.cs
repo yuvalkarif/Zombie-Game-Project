@@ -28,6 +28,8 @@ public class Player : MonoBehaviour {
     public int points;
     public Text moneyText;
     public Text pointsText;
+    public Text healthText;
+
     void Start()
     {
         playerStats.Init();
@@ -35,6 +37,7 @@ public class Player : MonoBehaviour {
         { statusIndicator.SetHealth(playerStats.currentHealth, playerStats.maxHealth); };
         SetMoneyText();
         SetPointsText();
+        SetHealthText();
     }
 
     
@@ -42,6 +45,7 @@ public class Player : MonoBehaviour {
     public void DamagePlayer(int damage)
     {
         playerStats.currentHealth -= damage;
+        SetHealthText();
         if (playerStats.currentHealth <= 0)
         {
             GameMaster.KillPlayer(this);
@@ -68,5 +72,9 @@ public class Player : MonoBehaviour {
     public void SetPointsText()
     {
         pointsText.text = "SCORE:" + points.ToString();
+    }
+    public void SetHealthText()
+    {
+        healthText.text = playerStats.currentHealth + "/" +  playerStats.maxHealth + "HP";
     }
 }
