@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class WaveSpawner : MonoBehaviour {
+public class WaveSpawner : MonoBehaviour { // the class which controls the Enemies spawned each wave and their properties 
 
     public enum SpawnState {Spawning,Waiting,Counting }
 
     [System.Serializable]
-    public class Wave
+    public class Wave // the properties of the wave 
     {
         public string name;
         public Transform enemy;
@@ -40,9 +40,9 @@ public class WaveSpawner : MonoBehaviour {
 
     }
 
-    void Update()
+    void Update() // updates and changes the properties of the enemies spawned in the wave 
     {
-        if (state == SpawnState.Waiting)
+        if (state == SpawnState.Waiting) // checks the state of the weapon 
         {
             if (!EnemyIsAlive())
             {
@@ -68,7 +68,7 @@ public class WaveSpawner : MonoBehaviour {
         }
 
     }
-    void WaveCompleted()
+    void WaveCompleted() // if the wave is completed it sets the properties for the next wave 
     {
         state = SpawnState.Counting;
         waveCountdown = timeBetweenWaves;
@@ -94,7 +94,7 @@ public class WaveSpawner : MonoBehaviour {
         }
         
     }
-    bool EnemyIsAlive()
+    bool EnemyIsAlive() // checks wether the enemy from the last wave is alive 
     {
         searchCountdown -= Time.deltaTime;
 
@@ -110,21 +110,21 @@ public class WaveSpawner : MonoBehaviour {
         return true;
     }
 
-    IEnumerator SpawnWave(Wave _wave)
+    IEnumerator SpawnWave(Wave _wave) // spawns the wave with the current properties
     {
         Debug.Log("Spawn Wave" + _wave.name);
         state = SpawnState.Spawning;
         for (int i = 0; i < _wave.count; i++)
         {
             SpawnEnemy(_wave.enemy);
-            yield return new WaitForSeconds(1f / _wave.rate);
+            yield return new WaitForSeconds(1f / _wave.rate); // spawns the wave at a ertain rate 
         }
 
         state = SpawnState.Waiting;
         yield break;
     }
 
-    void SpawnEnemy(Transform _enemy)
+    void SpawnEnemy(Transform _enemy)// spawns the enemy at a random spawn point from the exisiting ones 
     {
         if (spawnPoints.Length == 0)
         {
@@ -134,7 +134,7 @@ public class WaveSpawner : MonoBehaviour {
         Instantiate(_enemy, _sp.position,_sp.rotation);
     }
 
-    public void SetWaveText()
+    public void SetWaveText() // controls the UI of the wave number 
     {
 
 

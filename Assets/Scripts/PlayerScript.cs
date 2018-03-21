@@ -3,7 +3,7 @@
 /// <summary>
 /// Player controller and behavior
 /// </summary>
-public class PlayerScript : MonoBehaviour
+public class PlayerScript : MonoBehaviour// A movement script which uses the physics engine (early concept)
 {
     /// <summary>
     /// 1 - The speed of the ship

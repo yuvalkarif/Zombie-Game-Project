@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PauseGame : MonoBehaviour {
+public class PauseGame : MonoBehaviour { // When the esc button is pressed it pauses the game and vice versa 
 
 	public Transform canvas;
 
@@ -17,7 +17,7 @@ public class PauseGame : MonoBehaviour {
 	void Update () {
 		pause();
 	}
-	public void pause()
+	public void pause() // pauses the game 
 	{
 		if (Input.GetKeyDown(KeyCode.Escape)) {
 			if (canvas.gameObject.activeInHierarchy == false) {

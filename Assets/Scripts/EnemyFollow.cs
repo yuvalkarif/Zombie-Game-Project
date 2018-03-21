@@ -4,7 +4,7 @@ using Pathfinding;
 
 [RequireComponent (typeof (Rigidbody2D))]
 [RequireComponent (typeof (Seeker))]
-public class EnemyFollow : MonoBehaviour {
+public class EnemyFollow : MonoBehaviour { // A class which uses the A* Pathfinder to follow the enemy around the map 
 
 	// What to chase?
 	public Transform target;
@@ -76,7 +76,7 @@ public class EnemyFollow : MonoBehaviour {
 			return;
 		}
 
-		//TODO: Always look at player?
+		
 
 		if (path == null)
 			return;

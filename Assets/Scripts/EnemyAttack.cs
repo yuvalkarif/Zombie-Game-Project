@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyAttack : MonoBehaviour {
+public class EnemyAttack : MonoBehaviour { // A class which controls the attacks of the enemy on the player 
 
     public int damage;
     public float attackRange;
-    private float lastAttackTime;
+    private float lastAttackTime;               // The enemies attack properties 
     public float attackDelay;
     Transform target;
     public Rigidbody2D rb;
@@ -16,7 +16,7 @@ public class EnemyAttack : MonoBehaviour {
     private void Start()
 
     {
-        target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
+        target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>(); // gets the position (Transform) of the player character 
       
 
 
@@ -25,7 +25,7 @@ public class EnemyAttack : MonoBehaviour {
 
 
 
-    void Update () {
+    void Update () { // Constantly checks if the enemy is in attack range of the player and if it is then it damages the player 
 
         if (target != null)
         {

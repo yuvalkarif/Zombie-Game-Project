@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WeaponSwitching : MonoBehaviour {
+public class WeaponSwitching : MonoBehaviour { // switches the weapon 
 
     public int selectedWeapon;
 	// Use this for initialization
@@ -12,7 +12,7 @@ public class WeaponSwitching : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void Update () {//checks which weapon is selected and calls the function which swaps it to the other weapon 
         int previousSelected = selectedWeapon;
         if (Input.GetKeyDown(KeyCode.Q))
         {
@@ -28,7 +28,7 @@ public class WeaponSwitching : MonoBehaviour {
             SelectWeapon();
 	}
 
-    void SelectWeapon()
+    void SelectWeapon() // changes the selected weapon 
     {
         int i = 0;
         foreach (Transform weapon in transform)

@@ -2,17 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerMovement : MonoBehaviour {
+public class PlayerMovement : MonoBehaviour { // the class which controls the movement of the player in accordance to the wasd keys 
     public bool isMoving = false;
     public float speed = 5;
     private Animator anim;
 	// Use this for initialization
 	void Start () {
-        anim = GetComponent<Animator>();
+        anim = GetComponent<Animator>(); //  the animation of the player 
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void Update () { // Moves the player when the w,s,a,d keys are pressed accordingly 
 
         
         if (Input.GetKey(KeyCode.W))
