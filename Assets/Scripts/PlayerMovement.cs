@@ -6,16 +6,22 @@ public class PlayerMovement : MonoBehaviour { // the class which controls the mo
     public bool isMoving = false;
     public float speed = 5;
     private Animator anim;
+	KeyBinds k = new KeyBinds();
+	Dictionary<string,KeyCode> dic; 
 	// Use this for initialization
 	void Start () {
         anim = GetComponent<Animator>(); //  the animation of the player 
+	    //k = GetComponent<KeyBinds>();
+       //k.Start();
+		dic = k.Keys;
+		
 	}
 	
 	// Update is called once per frame
 	void Update () { // Moves the player when the w,s,a,d keys are pressed accordingly 
 
-        
-        if (Input.GetKey(KeyCode.W))
+
+		if (Input.GetKey(dic["Forward"]))
         {
             transform.Translate(Vector3.up * speed * Time.deltaTime, Space.World);
             isMoving = true;

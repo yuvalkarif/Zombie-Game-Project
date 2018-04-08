@@ -2,24 +2,24 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MaxAmmoPU : MonoBehaviour { // Max ammo power up 
+public class MaxAmmoPU : MonoBehaviour {
 
     void OnTriggerEnter2D(Collider2D other)
     {
        
-        if (other.gameObject.tag == "Player") // if the player steps on the power up it sets his ammo to the max 
+        if (other.gameObject.tag == "Player")
         {
-            Weapon[] weapon = GameObject.FindGameObjectWithTag("Player").transform.GetChild(0).GetComponentsInChildren<Weapon>(); // finds the weapon currently equipped 
+            Weapon[] weapon = GameObject.FindGameObjectWithTag("Player").transform.GetChild(0).GetComponentsInChildren<Weapon>();
             if (weapon != null)
             {
                 for (int i = 0; i < weapon.Length; i++)
                 {
-                    weapon[i].MaxAmmo(); // sets the ammo to the max 
+                    weapon[i].MaxAmmo();
                 }
                 
             }
             
-            Destroy(this.gameObject);// destroys the power up
+            Destroy(this.gameObject);
            
         }
     }

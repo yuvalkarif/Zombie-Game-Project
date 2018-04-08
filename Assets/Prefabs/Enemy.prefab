@@ -254,7 +254,7 @@ MonoBehaviour:
   speed: 2
   fMode: 0
   pathIsEnded: 0
-  nextWaypointDistance: 3
+  nextWaypointDistance: 0.1
 --- !u!114 &114559674550620370
 MonoBehaviour:
   m_ObjectHideFlags: 1
