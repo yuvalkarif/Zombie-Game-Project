@@ -11,6 +11,7 @@ public class PickupWeapon : MonoBehaviour { // this class allows the player to b
     public int cost;
     public Text buyText;
     public GameObject textObject;
+    
 
 
     void Start()
@@ -46,8 +47,8 @@ public class PickupWeapon : MonoBehaviour { // this class allows the player to b
                         }
                         wepNo++;
                     }
-                    vec = new Vector2(other.transform.GetChild(0).GetChild(weaponSwap).position.x, other.transform.GetChild(0).GetChild(weaponSwap).position.y);
-                    GameObject newWeapon = Instantiate(weaponToBuy, vec, other.transform.GetChild(0).GetChild(weaponSwap).rotation); // places the weapon in the player 
+
+                    GameObject newWeapon = Instantiate(weaponToBuy, new Vector2(other.transform.GetChild(0).GetChild(weaponSwap).position.x, other.transform.GetChild(0).GetChild(weaponSwap).position.y), other.transform.GetChild(0).GetChild(weaponSwap).rotation); // places the weapon in the player 
                     newWeapon.transform.parent = other.transform.GetChild(0);
                     Destroy(other.transform.GetChild(0).GetChild(weaponSwap).gameObject);
                 }
