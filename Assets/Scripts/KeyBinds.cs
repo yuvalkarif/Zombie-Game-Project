@@ -7,12 +7,14 @@ public class KeyBinds : MonoBehaviour {
 
 	// Use this for initialization
 	public Text forward,backward,left,right;
-	private Dictionary<string,KeyCode> keys = new Dictionary<string,KeyCode>();
-	public Dictionary<string,KeyCode> Keys
+
+	PlayerMovement player;
+	public  Dictionary<string,KeyCode> keys = new Dictionary<string,KeyCode>();
+	/*public Dictionary<string,KeyCode> Keys
 	{
 		get { return keys; }
 		set { keys = value; }
-	}
+	}*/
 
 	private Color32 normal = new Color (39, 171, 249, 255);
 	private Color32 selected = new Color32 (239, 116, 36, 255);
@@ -20,6 +22,8 @@ public class KeyBinds : MonoBehaviour {
 	
 	void Awake()
 	{
+		player =  GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>();
+
 		keys.Add ("Forward", (KeyCode)System.Enum.Parse(typeof(KeyCode),PlayerPrefs.GetString("Forward", "W")));
 		keys.Add ("Backward", (KeyCode)System.Enum.Parse(typeof(KeyCode),PlayerPrefs.GetString("Backward", "S")));
 		keys.Add ("Left", (KeyCode)System.Enum.Parse(typeof(KeyCode),PlayerPrefs.GetString("Left", "A")));
@@ -51,6 +55,7 @@ public class KeyBinds : MonoBehaviour {
 			if (e.isKey) {
 				Debug.Log("Detected key code: " + e.keyCode);
 				keys [currentKey.name] = e.keyCode;
+				//player.changeKey(e.keyCode , currentKey.name);
 				currentKey.transform.GetChild(0).GetComponent<Text>().text = e.keyCode.ToString();
 				currentKey.GetComponent<Image> ().color = normal;
 				Debug.Log (e.keyCode.ToString ());
@@ -64,6 +69,7 @@ public class KeyBinds : MonoBehaviour {
 			currentKey.GetComponent<Image> ().color = normal;
 		}
 		currentKey = clicked;
+		
 		Debug.Log (clicked);
 		currentKey.GetComponent<Image>().color = selected;
 
@@ -75,9 +81,5 @@ public class KeyBinds : MonoBehaviour {
 			PlayerPrefs.SetString(key.Key, key.Value.ToString());
 		}
 		PlayerPrefs.Save ();
-	}
-	public KeyCode test(string name)
-	{
-		return keys [name];
 	}
 }
