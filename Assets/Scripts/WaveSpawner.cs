@@ -25,7 +25,11 @@ public class WaveSpawner : MonoBehaviour { // the class which controls the Enemi
     public int countMultiplier;
     public float rateMultiplier;
     //UI
-    public int waveNumber = 0;
+    private int waveNumber = 0;
+    public int WaveNumber{
+        get{ return waveNumber;}
+        set{waveNumber  = value;}
+    }
     public Text waveText;
 
 
