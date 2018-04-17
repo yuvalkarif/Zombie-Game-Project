@@ -60,10 +60,12 @@ public class Player : MonoBehaviour { // the class which holds the properties th
     public void changeMoney(int change)// Changes the money of the player when he kills an enemy or buys a weapon 
     {
         money += change;
+        SetMoneyText();
     }
     public void changePoints(int change) // adds points to the player 
     {
         points += change;
+        SetPointsText();
     }
     public void SetMoneyText() // Controls the UI of the money 
     {
