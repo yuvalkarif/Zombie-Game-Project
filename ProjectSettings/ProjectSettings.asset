@@ -13,7 +13,7 @@ PlayerSettings:
   accelerometerFrequency: 60
   companyName: DefaultCompany
   productName: Prototype 01
-  defaultCursor: {fileID: 2800000, guid: fa220ea7ad485b3459ed7d5991f535c3, type: 3}
+  defaultCursor: {fileID: 2800000, guid: 2b376fd8cf0fe0b4e80676e30b3eadf8, type: 3}
   cursorHotspot: {x: 0, y: 0}
   m_SplashScreenBackgroundColor: {r: 0.13725491, g: 0.12156863, b: 0.1254902, a: 1}
   m_ShowUnitySplashScreen: 1
@@ -260,7 +260,7 @@ PlayerSettings:
   - m_BuildTarget: Standalone
     m_Icons:
     - serializedVersion: 2
-      m_Icon: {fileID: 2800000, guid: 7f50ecbfb9af08f499e1543ace5d194a, type: 3}
+      m_Icon: {fileID: 2800000, guid: 8af682fd473d6484c8b3427e162ecd06, type: 3}
       m_Width: 1024
       m_Height: 1024
       m_Kind: 0

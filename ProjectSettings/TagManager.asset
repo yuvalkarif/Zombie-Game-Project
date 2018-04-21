@@ -8,6 +8,7 @@ TagManager:
   - Setting
   - KeyBind
   - GameMaster
+  - Border
   layers:
   - Default
   - TransparentFX
