@@ -30,6 +30,7 @@ public class Weapon : MonoBehaviour { // The class controls the properties of th
 
         public Text AmmoText;
         public Text AmmoLeftText;
+        PauseGame p;
 
         private Animator anim; // animation 
 
@@ -37,16 +38,17 @@ public class Weapon : MonoBehaviour { // The class controls the properties of th
 
 
 
-    PauseGame p = new PauseGame();
+   
 
     // Use this for initialization
-    void Awake () { // initialized the properties 
+    void Start () { // initialized the properties 
         firePoint = this.transform;
         if (firePoint == null)
         { Debug.LogError("No Fire Point"); }
-		
-	}
-	void Start() // sets the properties to a certain amount and changes the UI 
+        p = new PauseGame();
+
+    }
+	void Awake() // sets the properties to a certain amount and changes the UI 
 	{
         currentAmmo = maxCurrentAmmo;
         currentMagAmmo = maxMagAmmo;
