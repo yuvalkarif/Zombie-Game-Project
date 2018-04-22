@@ -7,9 +7,9 @@ using TMPro;
 public class EducationalPopup : MonoBehaviour {
 
 	public Transform EducationalCanvas;
-
+	public Transform AnswerCanvas;
 	List<Question> lst;
-	public TextMeshProUGUI bt1,bt2,bt3,bt4;
+	public TextMeshProUGUI bt1,bt2,bt3,bt4,answer;
 	//TODO : add a list of facts / questions 
 	public int waveNum;
 	WaveSpawner ws;
@@ -51,18 +51,26 @@ public class EducationalPopup : MonoBehaviour {
 	} 
 	public void closePopup(TextMeshProUGUI btn)
 	{
+			AnswerCanvas.gameObject.SetActive (true);
+			EducationalCanvas.gameObject.SetActive (false);
 			if(btn.text == lst[num].Ans )
 			{
 				player.changePoints(100);
-				Debug.Log("Correct");
+				answer.text = "Correct";
+				Debug.Log("Correctly");
 			}
-
-			EducationalCanvas.gameObject.SetActive (false);
-			Debug.Log("Closed");
-			Time.timeScale = 1;
+			else
+				answer.text = "incorrectly";
+			
 			
 	}
-	
+	public void Ret()
+	{
+		
+		AnswerCanvas.gameObject.SetActive(false);
+		Debug.Log("Closed");
+		Time.timeScale = 1;
+	}
 	void Update()
 	{
 		if(ws.WaveNumber % waveNum == 0 && opened == false && ws.WaveNumber != 0)
