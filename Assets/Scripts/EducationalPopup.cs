@@ -31,8 +31,8 @@ public class EducationalPopup : MonoBehaviour {
 		lst.Add(new Question("The purpose of the immune system is to:"," Fight off sickness"," Help germs invade your body","Make your nose run","give you stomach aches"));
 		lst.Add(new Question("The immune system is made up of:","All the Answers are correct","Cells","Organs","Tissues"));
 		lst.Add(new Question("As part of the immune system, white blood cells fight germs. Another name for white blood cells is:","Leukocytes","Rhinovirus","Glands","Nodes"));
-		lst.Add(new Question("Leukocytes are found in lots of places, including an organ in your belly that filters blood and helps fight infections known as the:","Spleen","Heart","Kidneys","Brain"));
-		lst.Add(new Question("	The four main types of germs are:", "Viruses, bacteria, parasites, and fungi","Viruses, parasites, fungi, and phagocytes", "Parasites, bacteria, lymphocytes, and fungi","Small, medium, large, and extra large"));
+		lst.Add(new Question("white blood cells are found in lots of places, including an organ in your belly that filters blood and helps fight infections known as the:","Spleen","Heart","Kidneys","Brain"));
+		lst.Add(new Question("The four main types of germs are:", "Viruses, bacteria, parasites, and fungi","Viruses, parasites, fungi, and phagocytes", "Parasites, bacteria, lymphocytes, and fungi","Small, medium, large, and extra large"));
 
 
 		//waveNum = ws.WaveNumber;
@@ -56,8 +56,8 @@ public class EducationalPopup : MonoBehaviour {
 			if(btn.text == lst[num].Ans )
 			{
 				player.changePoints(100);
-				answer.text = "Correct";
-				Debug.Log("Correctly");
+				answer.text = "Correctly";
+				Debug.Log("Correct");
 			}
 			else
 				answer.text = "incorrectly";
