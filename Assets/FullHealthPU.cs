@@ -14,7 +14,7 @@ public class FullHealthPU : MonoBehaviour {
             Player player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
             if (player != null)
             {
-                player.HealPlayer();
+                player.DamagePlayer(-player.playerStats.maxHealth);
 
             }
             

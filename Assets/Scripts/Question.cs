@@ -16,10 +16,21 @@ public class Question : MonoBehaviour {
 		get{return ans;}
 		set{ans = value;}
 	}
-	public Question(string Question, string answer)
+	private List<string> wrongAns;
+	public List<string> WrongAns
 	{
+		get{return wrongAns;}
+		set{wrongAns = value;}
+	}
+	public Question(string Question, string answer, string wrongAnswer, string wrongAnswer1, string wrongAnswer2)
+	{
+		wrongAns = new List<string>();
 		this.ques = Question;
 		this.ans = answer;
+		this.wrongAns.Add( wrongAnswer);
+		this.wrongAns.Add( wrongAnswer1);
+		this.wrongAns.Add( wrongAnswer2);
+		
 	}
 	
 }

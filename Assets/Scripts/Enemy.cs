@@ -71,7 +71,7 @@ public class Enemy : MonoBehaviour {
 
     void PowerUpDrop() // A func which controls the Power Ups dropped from the enemy  
     {
-        if (Random.value <= 0.5)
+        if (Random.value <= 0.1)
         {
             
             Instantiate(PowerUps[Random.Range(0,PowerUps.Length)], new Vector2(this.transform.position.x, this.transform.position.y), Quaternion.identity);

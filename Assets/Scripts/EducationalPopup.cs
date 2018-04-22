@@ -28,10 +28,13 @@ public class EducationalPopup : MonoBehaviour {
 		ws =  GameObject.FindGameObjectWithTag("GameMaster").GetComponent<WaveSpawner>();
 		player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
 		lst = new List<Question>();
-		lst.Add(new Question("fact","answer"));
-		lst.Add(new Question("fact2","answer2"));
-		lst.Add(new Question("fact3","answer3"));
-		lst.Add(new Question("fact4","answer4"));
+		lst.Add(new Question("The purpose of the immune system is to:"," Fight off sickness"," Help germs invade your body","Make your nose run","give you stomach aches"));
+		lst.Add(new Question("The immune system is made up of:","All the Answers are correct","Cells","Organs","Tissues"));
+		lst.Add(new Question("As part of the immune system, white blood cells fight germs. Another name for white blood cells is:","Leukocytes","Rhinovirus","Glands","Nodes"));
+		lst.Add(new Question("Leukocytes are found in lots of places, including an organ in your belly that filters blood and helps fight infections known as the:","Spleen","Heart","Kidneys","Brain"));
+		lst.Add(new Question("	The four main types of germs are:", "Viruses, bacteria, parasites, and fungi","Viruses, parasites, fungi, and phagocytes", "Parasites, bacteria, lymphocytes, and fungi","Small, medium, large, and extra large"));
+
+
 		//waveNum = ws.WaveNumber;
 		
 	}
@@ -55,6 +58,7 @@ public class EducationalPopup : MonoBehaviour {
 			}
 
 			EducationalCanvas.gameObject.SetActive (false);
+			Debug.Log("Closed");
 			Time.timeScale = 1;
 			
 	}
@@ -77,6 +81,7 @@ public class EducationalPopup : MonoBehaviour {
 	public void ChangeAnswers(int pos)
 	{
 		int i = 0 ;
+		int x = 0 ;
 		int rnd = Random.Range(0,btnList.Count);
 		foreach(TextMeshProUGUI value in btnList)
 		{
@@ -85,12 +90,9 @@ public class EducationalPopup : MonoBehaviour {
 				value.text = lst[pos].Ans;
 			}
 			else{
-				int x = Random.Range(0,lst.Count);
-				while(x==pos)
-				{
-					x= Random.Range(0,lst.Count);
-				}
-				value.text = lst[x].Ans;
+				
+				value.text = lst[pos].WrongAns[x];
+				x++;
 			}
 			i++;	
 		}

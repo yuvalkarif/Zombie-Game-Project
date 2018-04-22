@@ -312,7 +312,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!212 &95025788
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -424,7 +424,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_text: 'Did You Know ? '
+  m_text: 'Do You Know The Answer ? '
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: d62a573c923f5cb47b8ff65261033b90, type: 2}
   m_sharedMaterial: {fileID: 2164040, guid: d62a573c923f5cb47b8ff65261033b90, type: 2}
@@ -451,8 +451,8 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 30
-  m_fontSizeBase: 30
+  m_fontSize: 28
+  m_fontSizeBase: 28
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -491,10 +491,10 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 115611196}
-    characterCount: 15
+    characterCount: 25
     spriteCount: 0
-    spaceCount: 4
-    wordCount: 3
+    spaceCount: 6
+    wordCount: 5
     linkCount: 0
     lineCount: 1
     pageCount: 1
@@ -17565,10 +17565,10 @@ RectTransform:
   m_Father: {fileID: 1997639025}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0}
-  m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 132.81, y: 45.39998}
-  m_SizeDelta: {x: 99.5, y: 30}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 7.35, y: -97.58}
+  m_SizeDelta: {x: -14.7, y: -195.16}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &377296135
 MonoBehaviour:
@@ -19576,7 +19576,7 @@ MonoBehaviour:
     file_cachedStartup: {fileID: 0}
     data_cachedStartup: 
     cacheStartup: 0
-  showNavGraphs: 1
+  showNavGraphs: 0
   showUnwalkableNodes: 1
   debugMode: 0
   debugFloor: 0
@@ -22874,10 +22874,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_text: "The Black Death was one of the most feared diseases in the 14th century.
-    It was a type of plague that was spread via the bite of infected rat fleas. The
-    name Black Death came from the swollen buboes (glands) in the victim\u2019s neck,
-    armpits, and inner thigh that turned black as they filled with blood. "
+  m_text: Question
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 715b80e429c437e40867928a4e1fc975, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 715b80e429c437e40867928a4e1fc975, type: 2}
@@ -22944,12 +22941,12 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 588841638}
-    characterCount: 300
+    characterCount: 8
     spriteCount: 0
-    spaceCount: 56
-    wordCount: 56
+    spaceCount: 0
+    wordCount: 1
     linkCount: 0
-    lineCount: 7
+    lineCount: 1
     pageCount: 1
     materialCount: 1
   m_havePropertiesChanged: 1
@@ -25282,7 +25279,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -117.75, y: -103.549995}
+  m_AnchoredPosition: {x: -18.250015, y: 0.000022888184}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &859330443
@@ -25514,10 +25511,10 @@ RectTransform:
   m_Father: {fileID: 1997639025}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0}
-  m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 47.3, y: 45.39998}
-  m_SizeDelta: {x: 99.5, y: 30}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 7.05, y: -64.3}
+  m_SizeDelta: {x: -14.1, y: -128.6}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &898559352
 MonoBehaviour:
@@ -26633,7 +26630,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isMoving: 0
-  speed: 2
+  speed: 3
 --- !u!50 &1086859426
 Rigidbody2D:
   serializedVersion: 4
@@ -34041,8 +34038,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -16.250004, y: 0.0000076293945}
-  m_SizeDelta: {x: 32.499992, y: 0}
+  m_AnchoredPosition: {x: 24.619997, y: -0.8499962}
+  m_SizeDelta: {x: -49.24001, y: -1.7000077}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1465841909
 MonoBehaviour:
@@ -34445,6 +34442,11 @@ Prefab:
       propertyPath: textObject
       value: 
       objectReference: {fileID: 827947179}
+    - target: {fileID: 114821789903656030, guid: fe622fd385634e245a498a978dd55c2a,
+        type: 2}
+      propertyPath: cost
+      value: 100
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fe622fd385634e245a498a978dd55c2a, type: 2}
   m_IsPrefabParent: 0
@@ -37117,8 +37119,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 448902f97f055194885108517012a406, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fireRate: 5
-  Damage: 50
+  fireRate: 3
+  Damage: 30
   whatToHit:
     serializedVersion: 2
     m_Bits: 4294967035
@@ -37127,9 +37129,9 @@ MonoBehaviour:
   MuzzleFlashPrefab: {fileID: 4335307689436846, guid: 26bf295fa42e7754faddf428eeafcb67,
     type: 2}
   effectSpawnRate: 10
-  maxCurrentAmmo: 30
+  maxCurrentAmmo: 20
   currentAmmo: 0
-  maxMagAmmo: 90
+  maxMagAmmo: 60
   currentMagAmmo: 0
   isReloading: 0
   reloadTime: 1
@@ -37166,10 +37168,10 @@ RectTransform:
   m_Father: {fileID: 1997639025}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0}
-  m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: -42.4, y: 45.399986}
-  m_SizeDelta: {x: 99.5, y: 30}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 6.85, y: -33.000008}
+  m_SizeDelta: {x: -13.7, y: -65.999985}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1882345691
 MonoBehaviour:

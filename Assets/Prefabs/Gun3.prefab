@@ -187,7 +187,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 448902f97f055194885108517012a406, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fireRate: 5
+  fireRate: 7.5
   Damage: 50
   whatToHit:
     serializedVersion: 2
@@ -197,9 +197,9 @@ MonoBehaviour:
   MuzzleFlashPrefab: {fileID: 4335307689436846, guid: 26bf295fa42e7754faddf428eeafcb67,
     type: 2}
   effectSpawnRate: 10
-  maxCurrentAmmo: 30
+  maxCurrentAmmo: 40
   currentAmmo: 0
-  maxMagAmmo: 90
+  maxMagAmmo: 100
   currentMagAmmo: 0
   isReloading: 0
   reloadTime: 1

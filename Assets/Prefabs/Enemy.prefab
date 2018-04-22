@@ -319,7 +319,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stats:
-    maxHealth: 100
+    maxHealth: 120
   statusIndicator: {fileID: 114559674550620370}
   PowerUps:
   - {fileID: 1618228557116960, guid: 3af1aeb02be9bed4eb32e353d8c216fe, type: 2}
