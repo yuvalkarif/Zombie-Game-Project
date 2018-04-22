@@ -7,9 +7,9 @@ using TMPro;
 public class EducationalPopup : MonoBehaviour {
 
 	public Transform EducationalCanvas;
-	public Transform AnswerCanvas;
+
 	List<Question> lst;
-	public TextMeshProUGUI bt1,bt2,bt3,bt4,answer;
+	public TextMeshProUGUI bt1,bt2,bt3,bt4;
 	//TODO : add a list of facts / questions 
 	public int waveNum;
 	WaveSpawner ws;
@@ -31,8 +31,8 @@ public class EducationalPopup : MonoBehaviour {
 		lst.Add(new Question("The purpose of the immune system is to:"," Fight off sickness"," Help germs invade your body","Make your nose run","give you stomach aches"));
 		lst.Add(new Question("The immune system is made up of:","All the Answers are correct","Cells","Organs","Tissues"));
 		lst.Add(new Question("As part of the immune system, white blood cells fight germs. Another name for white blood cells is:","Leukocytes","Rhinovirus","Glands","Nodes"));
-		lst.Add(new Question("white blood cells are found in lots of places, including an organ in your belly that filters blood and helps fight infections known as the:","Spleen","Heart","Kidneys","Brain"));
-		lst.Add(new Question("The four main types of germs are:", "Viruses, bacteria, parasites, and fungi","Viruses, parasites, fungi, and phagocytes", "Parasites, bacteria, lymphocytes, and fungi","Small, medium, large, and extra large"));
+		lst.Add(new Question("Leukocytes are found in lots of places, including an organ in your belly that filters blood and helps fight infections known as the:","Spleen","Heart","Kidneys","Brain"));
+		lst.Add(new Question("	The four main types of germs are:", "Viruses, bacteria, parasites, and fungi","Viruses, parasites, fungi, and phagocytes", "Parasites, bacteria, lymphocytes, and fungi","Small, medium, large, and extra large"));
 
 
 		//waveNum = ws.WaveNumber;
@@ -51,26 +51,18 @@ public class EducationalPopup : MonoBehaviour {
 	} 
 	public void closePopup(TextMeshProUGUI btn)
 	{
-			AnswerCanvas.gameObject.SetActive (true);
-			EducationalCanvas.gameObject.SetActive (false);
 			if(btn.text == lst[num].Ans )
 			{
 				player.changePoints(100);
-				answer.text = "Correctly";
 				Debug.Log("Correct");
 			}
-			else
-				answer.text = "incorrectly";
-			
+
+			EducationalCanvas.gameObject.SetActive (false);
+			Debug.Log("Closed");
+			Time.timeScale = 1;
 			
 	}
-	public void Ret()
-	{
-		
-		AnswerCanvas.gameObject.SetActive(false);
-		Debug.Log("Closed");
-		Time.timeScale = 1;
-	}
+	
 	void Update()
 	{
 		if(ws.WaveNumber % waveNum == 0 && opened == false && ws.WaveNumber != 0)
