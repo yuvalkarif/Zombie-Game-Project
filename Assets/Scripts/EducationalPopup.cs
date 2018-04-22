@@ -54,7 +54,12 @@ public class EducationalPopup : MonoBehaviour {
 			if(btn.text == lst[num].Ans )
 			{
 				player.changePoints(100);
+<<<<<<< HEAD
 				Debug.Log("Correct");
+=======
+				answer.text = "Correct";
+				Debug.Log("Correctly");
+>>>>>>> parent of f913f2f... fixed the questions and answers
 			}
 
 			EducationalCanvas.gameObject.SetActive (false);
