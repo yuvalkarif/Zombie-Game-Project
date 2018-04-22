@@ -46,6 +46,7 @@ public class Weapon : MonoBehaviour { // The class controls the properties of th
         if (firePoint == null)
         { Debug.LogError("No Fire Point"); }
         p = new PauseGame();
+        anim = transform.parent.parent.GetComponent<Animator>();
 
     }
 	void Awake() // sets the properties to a certain amount and changes the UI 
@@ -56,7 +57,7 @@ public class Weapon : MonoBehaviour { // The class controls the properties of th
 		SetAmmoText ();
         SetAmmoLeftText();
 
-        anim = transform.parent.parent.GetComponent<Animator>();
+
 
     }
 	void onEnable()
